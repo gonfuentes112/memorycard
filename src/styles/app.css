@@ -1,16 +1,115 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  gap: 2rem;
+}
+
+header {
+  color: white;
+  display: flex;
+  align-items: center;
+  width: 55%;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.header__info__title {
+  font-size: 3rem;
+}
+
+.score-display {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid red;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+}
+
 .card-collection {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    justify-items:center;
-    max-width: 50%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  justify-items: center;
+  max-width: 60%;
+}
+
+.card-collection .card:last-child {
+  grid-column: 5;
+  transform: translateX(50px);
+}
+
+@media screen and (max-width: 1400px) {
+    .card-collection {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        justify-items: center;
+        max-width: 60%;
+      }
+      
+      .card-collection .card:last-child {
+        grid-column: 7;
+        transform: translateX(0px);
+      }
+}
+
+@media screen and (max-width: 1100px) {
+    .card-collection {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        justify-items: center;
+        max-width: 60%;
+      }
+      
+      .card-collection .card:last-child {
+        grid-column: 3;
+        transform: translateX(50px);
+      }
+}
+
+@media screen and (max-width: 900px) {
+    .score-display {
+        font-size: 1rem;
+      }
+    .card-collection {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+        max-width: 60%;
+      }
+      
+      .card-collection .card:last-child {
+        grid-column: 3;
+        transform: translateX(0px);
+      }
+}
+
+
+@media screen and (max-width: 600px) {
+    .card-collection {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+        max-width: 60%;
+      }
+      
+      .card-collection .card:last-child {
+        grid-column: 2;
+        transform: translateX(0px);
+      }
 }

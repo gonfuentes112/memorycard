@@ -4,10 +4,8 @@ import "./styles/app.css";
 
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    // Generate a random index
     const j = Math.floor(Math.random() * (i + 1));
 
-    // Swap elements at indices i and j
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
@@ -18,6 +16,7 @@ function App() {
   const [memoIds, setMemoIds] = useState(new Set());
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+
   function handleChoice(id) {
     if (memoIds.has(id)) {
       setBestScore(Math.max(currentScore, bestScore));
@@ -25,6 +24,7 @@ function App() {
       setMemoIds(new Set());
       return;
     }
+
     setCurrentScore((currentScore) => currentScore + 1);
     const newMemoIds = new Set(memoIds);
     newMemoIds.add(id);
@@ -34,14 +34,20 @@ function App() {
   return (
     <>
       {/* introductory text */}
-      {/* current score */}
-      {/* best score */}
       {/* optionally, a victory message */}
-      <div className="score-display">
-        Current Score: {currentScore}
-        Best Score: {bestScore}
-      </div>
-      {/* randomize the memorycards */}
+      <header className="header">
+        <div className="header__info">
+          <div className="header__info__title">Pokecards</div>
+          Get points by clicking on an image but don&#39;t click on any more than once!
+        </div>
+        <div className="score-display">
+          <div className="score-display__score">
+            Current Score: {currentScore}
+          </div>
+          <div className="score-display__score">Best Score: {bestScore}</div>
+        </div>
+      </header>
+
       <div className="card-collection">
         {range.map((id) => {
           return <Pokecard key={id} reqId={id} handleChoice={handleChoice} />;
